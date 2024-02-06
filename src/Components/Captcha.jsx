@@ -1,9 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from "react-google-recaptcha";
 
 const MyForm = () => {
   const recaptchaRef = useRef(null);
   const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+
+  useEffect(() => {
+    recaptchaRef.current.execute();
+  }, []);
 
   const handleCaptchaChange = (value) => {
     setIsCaptchaVerified(true);
@@ -24,6 +28,7 @@ const MyForm = () => {
           sitekey="6Ldgc2kpAAAAAAP8egjKitqUxfXLoQy8WE23zFzU"
           onChange={handleCaptchaChange}
           ref={recaptchaRef}
+          size="invisible"
         />
 
         <button type="button" onClick={handleSubmit}>

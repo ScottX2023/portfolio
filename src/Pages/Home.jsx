@@ -4,6 +4,11 @@ import "../Sass/home.scss"
 
 
 function HomePage(){ 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate('/captcha-form');
+  }, [navigate]);
     return( 
   <div>
     <div className='about'>
