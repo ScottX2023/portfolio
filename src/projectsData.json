@@ -1,0 +1,83 @@
+[
+  {
+    "id": "1",
+    "title": "Print-it",
+    "githubLink": "https://github.com/ScottX2023/Print-it",
+    "coverImage": "Assets/Print-it.png",
+    "bannerImage": "Assets/Print-itBanner.png",
+    "description": "Ce projet m'a permis de découvrir Javascript avec la mise en place d'un carroussel qui boucle a l'infini, ainsi que l'utilisation d'un outitl de versionnage de mon code avec GitHub et Git afin d'effectuer les commandes.",
+    "githubPages": "https://scottx2023.github.io/Print-it/",
+    "skill": [
+      "Assets/Js.svg",
+      "Assets/Git.svg",
+      "Assets/Github.svg"
+    ]
+  },
+  {
+    "id": "2",
+    "title": "OhmyFood",
+    "githubLink": "https://github.com/ScottX2023/Ohmyfood",
+    "coverImage": "Assets/ohmyfood.svg",
+    "bannerImage": "Assets/OhmyfoodBanner.png",
+    "description": "Ce projet m'a permis de découvrir un nouvel outil afin de gérer plus simplement mes fichiers de style avec l'utilisation de Sass, de plus j'ai appris à utiliser les animations en CSS",
+    "githubPages": "https://scottx2023.github.io/Ohmyfood/",
+    "skill": [
+      "Assets/Html.svg",
+      "Assets/CSS.svg",
+      "Assets/Sass.svg"
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Sophie Bluel",
+    "githubLink": "https://github.com/ScottX2023/Projet-6",
+    "coverImage": "Assets/SophieBluel.webp",
+    "bannerImage": "Assets/SophieBluelBanner.png",
+    "description": "Ce projet m'a permis d'approfondir mes connaissances en Javascript avec des appels à une API ainsi que le création d'un formulaire permettant d'ajouter de nouveaux projets a une gallerie ainsi que le fonctionnement d'une API CRUD.",
+    "skill": [
+      "Assets/CSS.svg",
+      "Assets/Html.svg",
+      "Assets/Js.svg"
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Kasa",
+    "githubLink": "https://github.com/ScottX2023/projet-8",
+    "coverImage": "Assets/Kasa.svg",
+    "bannerImage": "Assets/KasaBanner.png",
+    "description": "Ce projet m'a permis de découvrir le framework React avec la mise en place d'un routeur afin de gérer la navigation pour mon app mais aussi de récupérer des données depuis un fichier json et d'afficher en fonction d'un id différentes pages après avoir cliquer sur la carte corréspondante.",
+    "skill": [
+      "Assets/Js.svg",
+      "Assets/React.svg",
+      "Assets/Sass.svg"
+    ]
+  },
+  {
+    "id": "5",
+    "title": "77events",
+    "githubLink": "https://github.com/ScottX2023/Projet-10",
+    "coverImage": "Assets/77events.webp",
+    "bannerImage": "Assets/77eventBanner.png",
+    "description": "Ce projet m'a permis d'apprendre a débugger un site avec des tests unitaire ainsi que des tests fonctionnels, mais surtout de débugger du code qui a été écrit par un autre developpeur",
+    "skill": [
+      "Assets/Js.svg",
+      "Assets/Html.svg",
+      "Assets/CSS.svg"
+    ]
+  },
+  {
+    "id": "6",
+    "title": "ArgentBank",
+    "githubLink": "https://github.com/ScottX2023/Projet-11",
+    "coverImage": "Assets/ArgentBank.png",
+    "bannerImage": "Assets/ArgentBankBanner.png",
+    "description": "Ce projet m'a permis d'apprendre a utiliser Redux afin de gérer l'état global d'une application avec notamment la gestion du token d'authentification et la modification du nom d'utilisateur de plus j'ai appris a rédiger les endpoints d'une API sur Swagger.",
+    "skill": [
+      "Assets/Js.svg",
+      "Assets/React.svg",
+      "Assets/Redux.svg",
+      "Assets/Swagger.svg"
+    ]
+  }
+]

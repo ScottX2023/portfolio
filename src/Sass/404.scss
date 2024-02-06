@@ -1,0 +1,45 @@
+.notFound{
+    max-width: 95%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    color: black;
+    &_infos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 250px);
+        &_title{
+            font-weight: 700;
+            font-size: 280px;
+            margin: 0;
+            @media screen and (max-width: 768px) {
+                font-size: 140px;
+                margin: auto;
+              }
+        }
+        &_content{
+            font-size: 28px;
+            text-align: center;
+            @media screen and (max-width: 768px) {
+                margin: auto;
+                font-size: 24px;
+              }
+        }
+        &_return{
+            display: block;
+            text-align: center;
+            font-weight: 500;
+            font-size: 12px;
+            margin-bottom: 40px;
+            text-decoration: none;
+            @media screen and (max-width: 768px) {
+                margin-top: 40px;
+              }
+        }
+        a {
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+}

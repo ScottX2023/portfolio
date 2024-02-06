@@ -1,0 +1,23 @@
+[
+    {
+      "id": "1",
+      "langages": [
+        {"path": "Assets/Js.svg", "description": "JavaScript"},
+        {"path": "Assets/Html.svg", "description": "HTML"},
+        {"path": "Assets/CSS.svg", "description": "CSS"}, 
+        {"path": "Assets/Git.svg", "description": "Git"}
+      ],
+      "framework": [
+        {"path": "Assets/React.svg", "description": "React"},
+        {"path": "Assets/Redux.svg", "description": "Redux"},
+        {"path": "Assets/Sass.svg", "description": "Sass"}
+      ],
+      "outils": [
+        {"path": "Assets/Github.svg", "description": "GitHub"},
+        {"path": "Assets/Swagger.svg", "description": "Swagger"},
+        {"path": "Assets/lighthouse.svg", "description": "Lighthouse"},
+        {"path": "Assets/notion.svg", "description": "Notion"}
+      ]
+    }
+  ]
+  
