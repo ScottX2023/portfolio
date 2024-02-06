@@ -21,7 +21,7 @@ const MyForm = () => {
     <div>
       <form>
         <ReCAPTCHA
-          sitekey="YOUR_RECAPTCHA_SITE_KEY"
+          sitekey="6Ldgc2kpAAAAAAP8egjKitqUxfXLoQy8WE23zFzU"
           onChange={handleCaptchaChange}
           ref={recaptchaRef}
         />
