@@ -1,16 +1,9 @@
 import React from 'react';
 import Test from '../Components/Test';
 import "../Sass/home.scss"
-import { useNavigate } from 'react-router';
-import { useEffect } from 'react';
 
 
 function HomePage(){ 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate('/captcha-form');
-  }, [navigate]);
     return( 
   <div>
     <div className='about'>
