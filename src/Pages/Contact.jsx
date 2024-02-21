@@ -1,26 +1,30 @@
 import React, { useRef, useState } from 'react';
 import emailjs from 'emailjs-com';
+import ReCAPTCHA from 'react-google-recaptcha';
 import '../Sass/contact.scss';
 
 const YOUR_SERVICE_ID = 'service_mfwqzcm';
 const YOUR_TEMPLATE_ID = 'template_9yzcipj';
 const YOUR_PUBLIC_KEY = 'XtGAHsKcwbXIdlTNK';
-const YOUR_SITE_KEY = '6Ldgc2kpAAAAAAP8egjKitqUxfXLoQy8WE23zFzU';
 
 export const ContactUs = () => {
     const form = useRef();
     const [message, setMessage] = useState('');
-    const [recaptchaToken, setRecaptchaToken] = useState('');
+    const [captchaCompleted, setCaptchaCompleted] = useState(false);
+
+    const onChange = () => {
+        setCaptchaCompleted(true);
+    };
 
     const sendEmail = (e) => {
         e.preventDefault();
 
-        if (!recaptchaToken) {
-            setMessage('Veuillez remplir le reCAPTCHA.');
+        if (!captchaCompleted) {
+            setMessage('Veuillez compléter le captcha.');
             return;
         }
 
-        emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY, { 'g-recaptcha-response': recaptchaToken })
+        emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY)
             .then((result) => {
                 console.log(result.text);
                 setMessage('Votre message a été envoyé avec succès!');
@@ -28,10 +32,6 @@ export const ContactUs = () => {
                 console.log(error.text);
                 setMessage('Une erreur s\'est produite. Veuillez réessayer.');
             });
-    };
-
-    const handleRecaptchaChange = (token) => {
-        setRecaptchaToken(token);
     };
 
     return (
@@ -48,15 +48,12 @@ export const ContactUs = () => {
                     <label className='contact_form_label' htmlFor="user_message">Message</label>
                     <textarea className='contact_form_textarea' id="user_message" name="user_message" required></textarea>
 
-        
-                    {recaptchaToken ? (
-                        <p className="success-message">reCAPTCHA rempli avec succès!</p>
-                    ) : (
-                        <div className="g-recaptcha" data-sitekey={YOUR_SITE_KEY} data-callback={handleRecaptchaChange}></div>
-                    )}
-
-                    <button className='contact_form_btn' type="button" onClick={sendEmail}>Send Email</button>
-                    {message && <p className="error-message">{message}</p>}
+                    <ReCAPTCHA
+                        sitekey="6Ldgc2kpAAAAAAP8egjKitqUxfXLoQy8WE23zFzU"
+                        onChange={onChange}
+                    />
+                    <button className='contact_form_btn' type="submit" disabled={!captchaCompleted}>Send Email</button>
+                    {message && <p className="success-message">{message}</p>}
                 </form>
             </div>
         </div>
