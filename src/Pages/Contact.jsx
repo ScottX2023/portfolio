@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import emailjs from 'emailjs-com';
-import ReCAPTCHA from 'react-google-recaptcha';
 import '../Sass/contact.scss';
 
 const YOUR_SERVICE_ID = 'service_mfwqzcm';
@@ -10,19 +9,9 @@ const YOUR_PUBLIC_KEY = 'XtGAHsKcwbXIdlTNK';
 export const ContactUs = () => {
     const form = useRef();
     const [message, setMessage] = useState('');
-    const [captchaCompleted, setCaptchaCompleted] = useState(false);
-
-    const onChange = () => {
-        setCaptchaCompleted(true);
-    };
 
     const sendEmail = (e) => {
         e.preventDefault();
-
-        if (!captchaCompleted) {
-            setMessage('Veuillez compléter le captcha.');
-            return;
-        }
 
         emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY)
             .then((result) => {
@@ -48,11 +37,7 @@ export const ContactUs = () => {
                     <label className='contact_form_label' htmlFor="user_message">Message</label>
                     <textarea className='contact_form_textarea' id="user_message" name="user_message" required></textarea>
 
-                    <ReCAPTCHA
-                        sitekey="6Ldgc2kpAAAAAGNZhKn9xAx0EYi8GAeOtEGSoLsR"
-                        onChange={onChange}
-                    />
-                    <button className='contact_form_btn' type="submit" disabled={!captchaCompleted}>Send Email</button>
+                    <button className='contact_form_btn' type="submit">Send Email</button>
                     {message && <p className="success-message">{message}</p>}
                 </form>
             </div>
