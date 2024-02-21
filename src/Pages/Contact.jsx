@@ -10,22 +10,26 @@ const YOUR_SITE_KEY = '6Ldgc2kpAAAAAAP8egjKitqUxfXLoQy8WE23zFzU';
 export const ContactUs = () => {
     const form = useRef();
     const [message, setMessage] = useState('');
+    const [showRecaptcha, setShowRecaptcha] = useState(false);
 
     const sendEmail = async (e) => {
         e.preventDefault();
 
-        window.grecaptcha.enterprise.ready(async () => {
-            const token = await window.grecaptcha.enterprise.execute(YOUR_SITE_KEY, { action: 'submit' });
+        if (!showRecaptcha) {
+            setShowRecaptcha(true);
+            return;
+        }
 
-            emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY, { 'g-recaptcha-response': token })
-                .then((result) => {
-                    console.log(result.text);
-                    setMessage('Votre message a été envoyé avec succès!');
-                }, (error) => {
-                    console.log(error.text);
-                    setMessage('Une erreur s\'est produite. Veuillez réessayer.');
-                });
-        });
+        const token = await window.grecaptcha.execute(YOUR_SITE_KEY, { action: 'submit' });
+
+        emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY, { 'g-recaptcha-response': token })
+            .then((result) => {
+                console.log(result.text);
+                setMessage('Votre message a été envoyé avec succès!');
+            }, (error) => {
+                console.log(error.text);
+                setMessage('Une erreur s\'est produite. Veuillez réessayer.');
+            });
     };
 
     return (
@@ -42,7 +46,9 @@ export const ContactUs = () => {
                     <label className='contact_form_label' htmlFor="user_message">Message</label>
                     <textarea className='contact_form_textarea' id="user_message" name="user_message" required></textarea>
 
-                    <div id="recaptcha" className="g-recaptcha" data-sitekey={YOUR_SITE_KEY}></div>
+                    {showRecaptcha && (
+                        <div className="g-recaptcha" data-sitekey={YOUR_SITE_KEY}></div>
+                    )}
 
                     <button className='contact_form_btn' type="submit">Send Email</button>
                     {message && <p className="success-message">{message}</p>}
