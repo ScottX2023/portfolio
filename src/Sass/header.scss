@@ -34,8 +34,8 @@ img {
     #header {
         padding-left: 10px; 
         padding-right: 10px; 
-        border-radius: 0 0 30px 30px;
-        margin: 0 20px; 
+        border-radius: 0;
+        margin: 0;
     }
 
     .logo-container {
@@ -43,8 +43,7 @@ img {
     }
 
     .flex-container {
-        width: 80%; 
-        gap: 0;
+        width: 100%; 
     }
 
 
@@ -53,10 +52,3 @@ img {
         height: 35px; 
     }
 }
-
-@media screen and (max-width: 768px) {
-    .logo-container {
-        margin-right: 20px;
-    }
-
-  }

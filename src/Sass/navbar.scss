@@ -1,45 +1,75 @@
 .nav {
-    margin-right: 75px;
-}
-
-.nav_list{
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    list-style: none;
-    text-decoration: none;
-
+    margin-right: 70px;
     @media screen and (max-width: 767px) {
         margin: 0;
-        padding: 0;
     }
 
-    &_item{
-        color: #fff;
+    .burger_menu {
+        display: none;
+    }
+
+    .nav_list {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        list-style: none;
         text-decoration: none;
-        font-size: 28px;
-        &_active{
-            position: relative;
+
+        @media screen and (max-width: 767px) {
+            margin: 0;
+            padding-bottom: 20px;
+            gap: 0;
+            display: none;
+        }
+
+        &_item {
             color: #fff;
+            text-decoration: none;
             font-size: 28px;
-            transition: all 0.2s ease-in-out;
-            border-bottom: 2px solid #fff;
+
+            &_active {
+                position: relative;
+                color: #fff;
+                font-size: 28px;
+                transition: all 0.2s ease-in-out;
+                border-bottom: 2px solid #fff;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            font-family: kanit, sans-serif;
+            font-weight: 400;
+
+            @media screen and (max-width: 767px) {
+                font-size: 16px;
+            }
         }
     }
+}
 
-    a {
-        text-decoration: none;
-        color: black;
-        font-family: kanit, sans-serif;
-        font-weight: 400;
-        
-        @media screen and (max-width: 767px) {
-            font-size: 16px;
-          }
-
+@media screen and (max-width: 767px) {
+    .open {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 12%;
+        right: 0;
+        background-color: lightgray;
+        z-index: 999;
+        width: 100%;
     }
-    @media screen and (max-width: 767px) {
-        gap: 10px;
 
-      }
+    .nav.open .nav_list .nav_list_item {
+        margin-bottom: 10px;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+    .burger_menu {
+        display: block !important;
+        padding: 10px;
+    }
 }

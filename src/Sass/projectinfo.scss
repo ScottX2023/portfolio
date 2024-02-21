@@ -41,7 +41,7 @@
 
 .github-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 30px;
   }
   
@@ -53,11 +53,18 @@
     border: none;
     width: 30%;
     font-size: 16px;
+    background-color: orange;
     &:hover {
         box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     }
   }
 
+  .githubpages-btn {
+    margin-left: 10px;
+  }
+  .centered {
+    text-align: center;
+  }
 @media (max-width: 768px) {
     .info-container {
         flex-direction: column;
@@ -66,7 +73,7 @@
 
     .skills-container,
     .description-container {
-        width: 60%;
+        width: 90%;
         margin-bottom: 20px;
     }
 
@@ -80,7 +87,7 @@
     }
 
     .github-button {
-        width: 70%;
+        width: 40%;
         padding: 15px;
     }
 
@@ -103,7 +110,7 @@
     }
 
     .github-button {
-        width: 60%; 
+        width: 30%; 
     }
 
     .toggle {

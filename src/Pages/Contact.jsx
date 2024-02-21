@@ -1,35 +1,31 @@
 import React, { useRef, useState } from 'react';
 import emailjs from 'emailjs-com';
+import '../Sass/contact.scss';
 
 const YOUR_SERVICE_ID = 'service_mfwqzcm';
 const YOUR_TEMPLATE_ID = 'template_9yzcipj';
 const YOUR_PUBLIC_KEY = 'XtGAHsKcwbXIdlTNK';
+const YOUR_SITE_KEY = '6Ldgc2kpAAAAAAP8egjKitqUxfXLoQy8WE23zFzU';
 
 export const ContactUs = () => {
     const form = useRef();
     const [message, setMessage] = useState('');
-    const [captchaToken, setCaptchaToken] = useState('');
 
     const sendEmail = async (e) => {
         e.preventDefault();
 
-        if (!captchaToken) {
-            setMessage('Veuillez d\'abord valider le captcha.');
-            return;
-        }
+        window.grecaptcha.enterprise.ready(async () => {
+            const token = await window.grecaptcha.enterprise.execute(YOUR_SITE_KEY, { action: 'submit' });
 
-        try {
-            const result = await emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY);
-            console.log(result.text);
-            setMessage('Votre message a été envoyé avec succès!');
-        } catch (error) {
-            console.error(error.text);
-            setMessage('Une erreur s\'est produite. Veuillez réessayer.');
-        }
-    };
-
-    const handleCaptchaVerification = (token) => {
-        setCaptchaToken(token);
+            emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY, { 'g-recaptcha-response': token })
+                .then((result) => {
+                    console.log(result.text);
+                    setMessage('Votre message a été envoyé avec succès!');
+                }, (error) => {
+                    console.log(error.text);
+                    setMessage('Une erreur s\'est produite. Veuillez réessayer.');
+                });
+        });
     };
 
     return (
@@ -46,8 +42,7 @@ export const ContactUs = () => {
                     <label className='contact_form_label' htmlFor="user_message">Message</label>
                     <textarea className='contact_form_textarea' id="user_message" name="user_message" required></textarea>
 
-
-                    <div className="g-recaptcha" data-sitekey="6Ldgc2kpAAAAAAP8egjKitqUxfXLoQy8WE23zFzU" data-callback={handleCaptchaVerification}></div>
+                    <div id="recaptcha" className="g-recaptcha" data-sitekey={YOUR_SITE_KEY}></div>
 
                     <button className='contact_form_btn' type="submit">Send Email</button>
                     {message && <p className="success-message">{message}</p>}

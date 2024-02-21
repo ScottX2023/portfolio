@@ -1,5 +1,5 @@
 import React from 'react';
-import Test from '../Components/Test';
+import Skills from '../Components/Skills';
 import "../Sass/home.scss"
 
 
@@ -14,7 +14,7 @@ function HomePage(){
       <p>Vous trouverez à la suite de cette introduction une section présentant les librairies, langages et outils que je maitrise.</p>
       <p>Si vous souhaitez me contacter n'hésitez pas à m'envoyer un mail depuis le formulaire de contact a disposition !</p>
     </div>  
-    <Test />
+    <Skills />
   </div>
 )};
 

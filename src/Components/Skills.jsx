@@ -1,8 +1,8 @@
 import React from "react";
-import "../Sass/test.scss";
+import "../Sass/skills.scss";
 import datas1 from "../skillsData.json";
 
-function Test() {
+function Skills() {
     if (!datas1 || datas1.length === 0) {
         return null;
     }
@@ -11,9 +11,9 @@ function Test() {
     return (
         <>
             <h2 className="skills-title">Compétences</h2>
-            <div className="test_container">
-                <div className="test_container_1 skills-icons">
-                    <div className="test_container_1_title">
+            <div className="skills_container">
+                <div className="skills_container_1 skills-icons">
+                    <div className="skills_container_1_title">
                         <h3>Outils</h3> 
                     </div>    
                     {outils.map((outil, index) => (
@@ -23,8 +23,8 @@ function Test() {
                         </div>
                     ))}
                 </div>
-                <div className="test_container_2 skills-icons">
-                    <div className="test_container_2_title">
+                <div className="skills_container_2 skills-icons">
+                    <div className="skills_container_2_title">
                         <h3>Librairies</h3> 
                     </div>   
                     {framework.map((frameworkItem, index) => (
@@ -34,8 +34,8 @@ function Test() {
                         </div>
                     ))}
                 </div>
-                <div className="test_container_3 skills-icons">
-                    <div className="test_container_3_title">
+                <div className="skills_container_3 skills-icons">
+                    <div className="skills_container_3_title">
                         <h3>Langages</h3> 
                     </div>
                     {langages.map((langage, index) => (
@@ -50,4 +50,4 @@ function Test() {
     );
 }
 
-export default Test;
+export default Skills;

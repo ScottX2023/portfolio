@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import data from '../projectsData.json';
 import Banner from './Banner';
-import Test2 from './Test2';
+import ProjectInfo from './ProjectInfo'
 
 function ProjectDetails() {
   const { id } = useParams();
@@ -14,9 +14,9 @@ function ProjectDetails() {
 
   return (
     <div>
-      <h2>{project.title}</h2>
+      <h2 className="centered">{project.title}</h2>
       <Banner imageUrl={`/${project.bannerImage}`} title={project.title} />
-      <Test2 projectId={id} />
+      <ProjectInfo projectId={id} />
     </div>
   );
 }

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import data from "../projectsData.json";
-import '../Sass/test2.scss';
+import '../Sass/projectinfo.scss';
 import { useParams } from "react-router";
 
-function Test2() {
+function ProjectInfo() {
     const [isSkillsClicked, setIsSkillsClicked] = useState(false);
-    const [isDescClicked, setIsDescClicked] = useState(false); 
-    const {id} = useParams();
+    const [isDescClicked, setIsDescClicked] = useState(false);
+    const { id } = useParams();
     const project = data.find((item) => item.id === id);
     const [Open, setOpen] = useState(false);
     const [dscOpen, setdscOpen] = useState(false);
@@ -67,16 +67,15 @@ function Test2() {
                 <button onClick={() => window.open(project.githubLink, "_blank")} className="github-button">
                     GitHub
                 </button>
-                { project.githubPages && 
-                <div className="githubpages-btn">
-                    <button onClick={() => window.open(project.githubPages, "_blank")} className="github-button ">
-                        GitHubPages
-                    </button> 
-                </div>
+                {project.githubPages &&
+                <button onClick={() => window.open(project.githubPages, "_blank")} className="github-button ">
+                    Voir le site
+                 </button>
+
                 }
             </div>
         </>
     );
 }
 
-export default Test2;
+export default ProjectInfo;
