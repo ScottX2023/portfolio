@@ -49,7 +49,7 @@ export const ContactUs = () => {
                     <textarea className='contact_form_textarea' id="user_message" name="user_message" required></textarea>
 
                     <ReCAPTCHA
-                        sitekey="6Ldgc2kpAAAAAAP8egjKitqUxfXLoQy8WE23zFzU"
+                        sitekey="6Ldgc2kpAAAAAGNZhKn9xAx0EYi8GAeOtEGSoLsR"
                         onChange={onChange}
                     />
                     <button className='contact_form_btn' type="submit" disabled={!captchaCompleted}>Send Email</button>
