@@ -10,19 +10,17 @@ const YOUR_SITE_KEY = '6Ldgc2kpAAAAAAP8egjKitqUxfXLoQy8WE23zFzU';
 export const ContactUs = () => {
     const form = useRef();
     const [message, setMessage] = useState('');
-    const [showRecaptcha, setShowRecaptcha] = useState(false);
+    const [recaptchaToken, setRecaptchaToken] = useState('');
 
-    const sendEmail = async (e) => {
+    const sendEmail = (e) => {
         e.preventDefault();
 
-        if (!showRecaptcha) {
-            setShowRecaptcha(true);
+        if (!recaptchaToken) {
+            setMessage('Veuillez remplir le reCAPTCHA.');
             return;
         }
 
-        const token = await window.grecaptcha.execute(YOUR_SITE_KEY, { action: 'submit' });
-
-        emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY, { 'g-recaptcha-response': token })
+        emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY, { 'g-recaptcha-response': recaptchaToken })
             .then((result) => {
                 console.log(result.text);
                 setMessage('Votre message a été envoyé avec succès!');
@@ -30,6 +28,10 @@ export const ContactUs = () => {
                 console.log(error.text);
                 setMessage('Une erreur s\'est produite. Veuillez réessayer.');
             });
+    };
+
+    const handleRecaptchaChange = (token) => {
+        setRecaptchaToken(token);
     };
 
     return (
@@ -46,12 +48,15 @@ export const ContactUs = () => {
                     <label className='contact_form_label' htmlFor="user_message">Message</label>
                     <textarea className='contact_form_textarea' id="user_message" name="user_message" required></textarea>
 
-                    {showRecaptcha && (
-                        <div className="g-recaptcha" data-sitekey={YOUR_SITE_KEY}></div>
+        
+                    {recaptchaToken ? (
+                        <p className="success-message">reCAPTCHA rempli avec succès!</p>
+                    ) : (
+                        <div className="g-recaptcha" data-sitekey={YOUR_SITE_KEY} data-callback={handleRecaptchaChange}></div>
                     )}
 
-                    <button className='contact_form_btn' type="submit">Send Email</button>
-                    {message && <p className="success-message">{message}</p>}
+                    <button className='contact_form_btn' type="button" onClick={sendEmail}>Send Email</button>
+                    {message && <p className="error-message">{message}</p>}
                 </form>
             </div>
         </div>
